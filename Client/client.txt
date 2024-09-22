@@ -1,0 +1,1 @@
+All frontend actions are implemented in client folder
