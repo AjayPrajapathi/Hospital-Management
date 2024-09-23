@@ -1,3 +1,4 @@
+import { userModel } from "./user.schema.js";
 
 export const registerUser = async(userData)=>{
     try{
