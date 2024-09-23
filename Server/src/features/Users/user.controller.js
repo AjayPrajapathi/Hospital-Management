@@ -1,3 +1,4 @@
+
 export const userRegistration = async(req, res, next)=>{
     let { password } = req.body;
     password = await bcrypt.hash(password, 12);
