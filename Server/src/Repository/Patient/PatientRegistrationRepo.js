@@ -1,7 +1,7 @@
 import express from "express";
-import ApiResponse from "../../utils/ApiResponse";
-import ApiError from "../../utils/ApiError";
-import Patient from "../../Model/Registration/PatientRegistration";
+import ApiResponse from "../../utils/ApiResponse.js";
+import ApiError from "../../utils/ApiError.js";
+import Patient from "../../Model/Registration/PatientRegistration.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
