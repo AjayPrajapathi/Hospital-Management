@@ -1,20 +1,19 @@
 import express from "express";
 import dotenv from "dotenv";
+import userRoutes from "./src/Routers/patientRoutes.js";
+// import doctorRoutes from './src/Routers/doctorRoutes.js';
+import { connectDb } from "./src/db.Config.js";
 
-import userRouter from './src/features/Users/user.router.js';
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(express.json());
 
-// login and Registration Routers
-app.listen('/user', userRouter)
-
-// Doctor routers
-
-// Patients related Routers
+app.use("/user", userRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port number ${port}`);
+  connectDb();
 });
