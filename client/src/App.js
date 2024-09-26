@@ -1,8 +1,14 @@
-import LoginPage from './Components/Homepage/LoginPage';
+// import DoctorList from './Components/Doctor/DoctorList';
+import DoctorsList from './Components/Doctor/DoctorsList';
+
+// import LoginPage from './Components/Homepage/LoginPage';
 
 function App() {
   return (
-    <LoginPage />
+    // <LoginPage />
+
+    <DoctorsList/>
+
   );
 }
 
