@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-import { patientRoutes } from "./src/Repository/Patient/PatientRegistrationRepo.js";
 import userRoutes from "./src/Routers/patientRoutes.js";
 dotenv.config();
 import express from "express";
@@ -44,7 +43,6 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 
 app.use("/user", userRoutes);
-// app.use('/doctor', doctorRoutes);
 
 
 
