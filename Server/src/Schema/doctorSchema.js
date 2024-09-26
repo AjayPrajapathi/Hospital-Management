@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< HEAD:Server/src/Model/Registration/doctorSchema.js
 import mongoose, { Types } from "mongoose";
 
@@ -59,6 +60,8 @@ const doctorSchema = mongoose.Schema({
 const doctorModel = mongoose.model("Doctor", doctorSchema);
 export default doctorModel;
 =======
+=======
+>>>>>>> b6ae51e (commit changes)
 import mongoose from "mongoose";
 
 const doctorSchema = new mongoose.Schema({
@@ -90,4 +93,7 @@ const doctorSchema = new mongoose.Schema({
 
 export const doctorModel = mongoose.model("Doctor", doctorSchema);
 
+<<<<<<< HEAD
 >>>>>>> 2a53951 (Changes in Login and Register code for patient and doctor):Server/src/Schema/doctorSchema.js
+=======
+>>>>>>> b6ae51e (commit changes)

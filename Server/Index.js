@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import userRoutes from "./src/Routers/patientRoutes.js";
-dotenv.config();
+
 import express from "express";
 import connectMongodb from "./src/config/connectMongodb.js";
 import cors from "cors";
@@ -9,7 +9,7 @@ import { errorHandler } from "./src/middleware/errorHandler.middleware.js";
 
 import doctorRouter from "./src/Repository/doctors/doctor.router.js";
 
-
+dotenv.config();
 
 const app = express();
 
@@ -50,17 +50,4 @@ app.use("/user", userRoutes);
 app.listen(port, () => {
   console.log(`Server is running on port number ${port}`);
   connectMongodb()
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
+})
