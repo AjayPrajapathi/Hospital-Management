@@ -20,5 +20,4 @@ const PatienSchema = new mongoose.Schema({
   },
 });
 
-export const patientModel = mongoose.model("Patient", PatienSchema);
-
+export const PatientModel = mongoose.model("PatientModel", PatienSchema);
