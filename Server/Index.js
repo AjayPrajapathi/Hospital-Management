@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import userRoutes from "./src/Routers/user.Routes.js";
+import { RegistrationRoutes } from "./src/Routers/DoctorPatientRegisterRoutes.js";
 
 import express from "express";
 import connectMongodb from "./src/config/connectMongodb.js";
@@ -9,7 +9,7 @@ import { errorHandler } from "./src/middleware/errorHandler.middleware.js";
 
 //====== setup cors =======//
 const corsOptions = {
-  origin: 'http://localhost:3000', //------- Adjust this to your frontend's origin ---------//
+  origin: "http://localhost:3000", //------- Adjust this to your frontend's origin ---------//
   credentials: true,
 };
 
@@ -20,18 +20,15 @@ const port = process.env.PORT || 3000;
 
 //====== used middleware for parsing req body and cookies =====//
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use(cors(corsOptions))
+app.use(cors(corsOptions));
 app.use(errorHandler);
 
-app.use("/user", userRoutes);
-
-
-
+app.use("/api/Register", RegistrationRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port number ${port}`);
-  connectMongodb()
-})
+  connectMongodb();
+});
