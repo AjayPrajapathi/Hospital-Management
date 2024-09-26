@@ -1,3 +1,4 @@
+<<<<<<< HEAD:Server/src/Model/Registration/doctorSchema.js
 import mongoose, { Types } from "mongoose";
 
 const doctorSchema = mongoose.Schema({
@@ -57,3 +58,36 @@ const doctorSchema = mongoose.Schema({
 
 const doctorModel = mongoose.model("Doctor", doctorSchema);
 export default doctorModel;
+=======
+import mongoose from "mongoose";
+
+const doctorSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  department:{
+    type: String,
+    enum: ['Cardio','Neuro', 'Dermitologist', 'ENT', 'Dentist', 'gynecologist']
+  },
+  image:{
+    type: File
+  }
+});
+
+export const doctorModel = mongoose.model("Doctor", doctorSchema);
+
+>>>>>>> 2a53951 (Changes in Login and Register code for patient and doctor):Server/src/Schema/doctorSchema.js

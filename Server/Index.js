@@ -1,7 +1,6 @@
 import dotenv from "dotenv";
 import { patientRoutes } from "./src/Repository/Patient/PatientRegistrationRepo.js";
-
-
+import userRoutes from "./src/Routers/patientRoutes.js";
 dotenv.config();
 import express from "express";
 import connectMongodb from "./src/config/connectMongodb.js";
@@ -42,7 +41,14 @@ app.use(errorHandler);
 
 const port = process.env.PORT || 3000;
 
-app.use("/patient", patientRoutes);
+app.use(express.json());
+
+app.use("/user", userRoutes);
+// app.use('/doctor', doctorRoutes);
+
+
+
+
 app.listen(port, () => {
   console.log(`Server is running on port number ${port}`);
   connectMongodb()
