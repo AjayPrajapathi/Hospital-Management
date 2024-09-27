@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { doctorData } from "../DummyData/doctorData";
 
 function DoctorsList() {
   const [doctors, setDoctors] = useState([]);
@@ -7,43 +8,14 @@ function DoctorsList() {
   const [selectedSpecialist, setSelectedSpecialist] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
 
-  //  It is dummy doctor data for testing purposedummy doctor data
+  
+
   useEffect(() => {
-    const doctorData = [
-      {
-        id: 1,
-        name: "Bipin",
-        department: "cardiologist",
-        specialist: "migrant",
-        totalApointments: 200,
-        totalPatients: 500,
-        availabiltyStatus: "available",
-      },
-      {
-        id: 2,
-        name: "Navneet",
-        department: "cardiologist",
-        specialist: "migrant",
-        totalApointments: 200,
-        totalPatients: 500,
-        availabiltyStatus: "unavailable",
-      },
-      {
-        id: 3,
-        name: "Priya",
-        department: "neurology",
-        specialist: "stroke",
-        totalApointments: 150,
-        totalPatients: 300,
-        availabiltyStatus: "available",
-      },
-    ];
     setDoctors(doctorData);
-    setFilteredDoctors(doctorData); // Initializing  filtered doctors with all doctors
+    setFilteredDoctors(doctorData); // Initialize filtered doctors with all doctors
   }, []);
 
-  // Handle filter changes
-  const handleFilterChange = () => {
+  useEffect(() => {
     let updatedDoctors = doctors;
 
     if (selectedDepartment) {
@@ -64,8 +36,8 @@ function DoctorsList() {
       );
     }
 
-    setFilteredDoctors(updatedDoctors); // Update the filtered list
-  };
+    setFilteredDoctors(updatedDoctors);
+  }, [selectedDepartment, selectedSpecialist, selectedStatus, doctors]);
 
   return (
     <div className="Doctor">
@@ -73,10 +45,7 @@ function DoctorsList() {
         <select
           id="Department"
           value={selectedDepartment}
-          onChange={(e) => {
-            setSelectedDepartment(e.target.value);
-            handleFilterChange();
-          }}
+          onChange={(e) => setSelectedDepartment(e.target.value)}
         >
           <option value="">All Departments</option>
           <option value="cardiologist">Cardiologist</option>
@@ -86,10 +55,7 @@ function DoctorsList() {
         <select
           id="Specialist"
           value={selectedSpecialist}
-          onChange={(e) => {
-            setSelectedSpecialist(e.target.value);
-            handleFilterChange();
-          }}
+          onChange={(e) => setSelectedSpecialist(e.target.value)}
         >
           <option value="">All Specialists</option>
           <option value="migrant">Migrant</option>
@@ -99,10 +65,7 @@ function DoctorsList() {
         <select
           id="Status"
           value={selectedStatus}
-          onChange={(e) => {
-            setSelectedStatus(e.target.value);
-            handleFilterChange();
-          }}
+          onChange={(e) => setSelectedStatus(e.target.value)}
         >
           <option value="">All Statuses</option>
           <option value="available">Available</option>
