@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { inventoryData } from "../DummyData/inventory";
+import { inventoryData } from "../DummyData/inventoryData";
 
 export default function Inventory() {
   const [inventoryItems, setInventoryItems] = useState([]);
