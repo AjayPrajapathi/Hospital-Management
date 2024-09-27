@@ -1,4 +1,5 @@
 // import DoctorList from './Components/Doctor/DoctorList';
+import Appointment from './Components/Appointments/Appointments';
 import DoctorsList from './Components/Doctor/DoctorsList';
 import Inventory from './Components/Inventory/Inventory';
 import PatientList from './Components/Patient/PatientList';
@@ -12,7 +13,8 @@ function App() {
 
     // <DoctorsList/>
     // <Inventory/>
-    <PatientList/>
+    // <PatientList/>
+    <Appointment/>
     
 
   );
