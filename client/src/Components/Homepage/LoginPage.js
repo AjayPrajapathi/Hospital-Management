@@ -35,7 +35,7 @@ const LoginPage = () => {
               Sign in with Google
             </button>
             <button type="button">
-              <img src="" alt="Fb logo" width="20" height="20" />
+              <img src="" alt="Fb logo" width="48" height="48" />
               Sign in with Facebook
             </button>
           </div>
@@ -51,4 +51,4 @@ const LoginPage = () => {
   );
 }
 
-export default LoginPage
+export default LoginPage;
