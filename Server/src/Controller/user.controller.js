@@ -1,4 +1,8 @@
-import { addPatient, userLogin } from "../Repository/user.repository.js";
+import {
+  addAdmin,
+  addPatient,
+  userLogin,
+} from "../Repository/user.repository.js";
 import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import bcrypt from "bcrypt";
@@ -28,9 +32,9 @@ export const patientRegister = async (req, res) => {
   }
 };
 
-export const doctorRegister = async (req, res) => {
+export const AdminRegister = async (req, res) => {
   try {
-    const { name, email, password, department } = req.body;
+    const { name, email, password } = req.body;
     if (!name || !email || !password || !department) {
       throw new ApiError(400, "All fields are required");
     }
@@ -40,9 +44,8 @@ export const doctorRegister = async (req, res) => {
       name,
       email,
       password: hasedPassword,
-      department,
     };
-    const savePatient = await addDoctor(data);
+    const savePatient = await addAdmin(data);
     res
       .status(200)
       .json(new ApiResponse(200, savePatient, "Doctor sucessfully register"));
