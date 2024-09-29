@@ -1,12 +1,12 @@
 import express from "express";
 import {
   patientRegister,
-  doctorRegister,
+  AdminRegister,
 } from "../Controller/user.controller.js";
 import { userLogin } from "../Repository/user.repository.js";
 
 export const RegistrationRoutes = express.Router();
 
 RegistrationRoutes.route("/patient/register").post(patientRegister);
-RegistrationRoutes.route("/doctor/register").post(doctorRegister);
+RegistrationRoutes.route("/admin/register").post(AdminRegister);
 RegistrationRoutes.route("/login").post(userLogin);

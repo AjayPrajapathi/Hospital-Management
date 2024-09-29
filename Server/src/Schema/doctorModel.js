@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const DoctorSchema = new mongoose.Schema({
+const DoctorModel = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -10,11 +10,6 @@ const DoctorSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-  },
-
-  password: {
-    type: String,
-    required: [true, "Password is required"],
   },
 
   phoneNumber: {
@@ -27,6 +22,9 @@ const DoctorSchema = new mongoose.Schema({
   gender: {
     type: String,
     enum: ["male", "female"],
+  },
+  Image: {
+    type: String,
   },
 
   specialty: {
@@ -51,5 +49,5 @@ const DoctorSchema = new mongoose.Schema({
   },
 });
 
-const DoctorModel = mongoose.model("DoctorModel", DoctorSchema);
-export default DoctorModel;
+const DoctorSchema = mongoose.model("DoctorSchema", DoctorModel);
+export default DoctorSchema;
