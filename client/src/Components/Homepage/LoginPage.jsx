@@ -1,18 +1,18 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./LoginPage.css";
-import { useRef, useState, useEffect } from "react";
 import {
   faCheck,
   faTimes,
   faInfoCircle,
-  faIcons
+  faIcons,
 } from "@fortawesome/free-solid-svg-icons";
+import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_ ]{3,23}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%])[A-Za-z\d!@#$%]{8,24}$/;
-
+const PWD_REGEX =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%])[A-Za-z\d!@#$%]{8,24}$/;
 
 const LoginPage = () => {
   const userRef = useRef();
@@ -66,14 +66,30 @@ const LoginPage = () => {
   }, [pwd, matchPwd]);
 
   useEffect(() => {
-    setErrMsg('');
+    setErrMsg("");
   }, [user, pwd, matchPwd]);
 
+  // on from submit handler function
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!validName || !validEmail || !validPwd || !validMatch) {
+      setErrMsg("Invalid entry");
+      return;
+    }
+    setSuccess(true);
+    // Guys here we can add the code to send the form data to backend API
+  };
 
   return (
     <div className="container">
       <div className="form-container">
-        <p ref={errRef} className={errMsg ? "errMsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+        <p
+          ref={errRef}
+          className={errMsg ? "errMsg" : "offscreen"}
+          aria-live="assertive"
+        >
+          {errMsg}
+        </p>
         <h1>Get Started Now</h1>
         <form>
           <div className="input-group">
@@ -99,10 +115,17 @@ const LoginPage = () => {
               onBlur={() => setUserFocus(false)}
               placeholder="Enter your name"
             />
-            <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
+            <p
+              id="uidnote"
+              className={
+                userFocus && user && !validName ? "instructions" : "offscreen"
+              }
+            >
               <FontAwesomeIcon icon={faInfoCircle} />
-              4 to 24 characters.<br />
-              Must begin with a letter.<br />
+              4 to 24 characters.
+              <br />
+              Must begin with a letter.
+              <br />
               Letters, numbers, underscores, hyphens allowed.
             </p>
           </div>
@@ -129,9 +152,17 @@ const LoginPage = () => {
               onFocus={() => setEmailFocus(true)}
               onBlur={() => setEmailFocus(false)}
             />
-            <p id="emailnote" className={emailFocus && email && !validEmail ? "instructions" : "offscreen"}>
+            <p
+              id="emailnote"
+              className={
+                emailFocus && email && !validEmail
+                  ? "instructions"
+                  : "offscreen"
+              }
+            >
               <FontAwesomeIcon icon={faInfoCircle} />
-              example@domain.com<br />
+              example@domain.com
+              <br />
             </p>
           </div>
           <div className="input-group">
@@ -155,17 +186,22 @@ const LoginPage = () => {
               onFocus={() => setPwdFocus(true)}
               onBlur={() => setPwdFocus(false)}
             />
-            <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
+            <p
+              id="pwdnote"
+              className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
+            >
               <FontAwesomeIcon icon={faInfoCircle} />
-              8 to 24 characters.<br />
-              Must include uppercase and lowercase letters, a number and a special characte. <br/>
+              8 to 24 characters.
+              <br />
+              Must include uppercase and lowercase letters, a number and a
+              special characte. <br />
             </p>
           </div>
           <div className="checkbox-group">
             <input id="terms" type="checkbox" />
             <label htmlFor="terms">I agree to the terms & policy</label>
           </div>
-          <button className="btn" type="submit">
+          <button className="btn" type="submit" onClick={handleSubmit}>
             Signup
           </button>
 
@@ -174,12 +210,12 @@ const LoginPage = () => {
           </div>
 
           <div className="social-login">
-            <button type="button">
-              <img src="" alt="Google logo" width="20" height="20" />
+            <button type="button" className="social-button">
+              <FontAwesomeIcon icon={faGoogle} size="2x" className="icon" />
               Sign in with Google
             </button>
-            <button type="button">
-              <img src="" alt="Fb logo" width="48" height="48" />
+            <button type="button" className="social-button">
+              <FontAwesomeIcon icon={faFacebook} size="2x" className="icon" />
               Sign in with Facebook
             </button>
           </div>

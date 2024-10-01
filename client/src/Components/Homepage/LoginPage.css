@@ -192,9 +192,20 @@ body {
   display: inline-block;
 }
 
+.social-login .social-button {
+  display: flex;
+  align-items: center; 
+  gap: 8px; 
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
 
-
-
+.social-login .icon {
+  margin-right: 6px; 
+}
 
   @media (max-width: 430px) {
     .form-container {
