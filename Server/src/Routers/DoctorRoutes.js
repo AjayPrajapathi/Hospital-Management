@@ -2,6 +2,9 @@ import express from "express";
 import { upload } from "../middleware/multer.js";
 import {
   AddDoctorController,
+  DeatailOfDoctor,
+  DeleteDoctor,
+  getallDoctor,
   UpdateDoctorController,
 } from "../Controller/DoctorController.js";
 
@@ -16,3 +19,7 @@ DoctorRoutes.put(
   upload.single("image"),
   UpdateDoctorController
 );
+
+DoctorRoutes.route("/getallDoctor").get(getallDoctor);
+DoctorRoutes.route("/Delete/:id").delete(DeleteDoctor);
+DoctorRoutes.route("/detailDoctor/:id").get(DeatailOfDoctor);
