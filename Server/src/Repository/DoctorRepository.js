@@ -83,3 +83,33 @@ export const updateDoctor = async (doctorId, updateData) => {
 
   return updatedDoctor;
 };
+
+export const ReadDoctor = async () => {
+  try {
+    const Doctor = await DoctorSchema.find({});
+    return Doctor;
+  } catch {
+    throw new ApiError(404, "no doctor found");
+  }
+};
+
+export const DeleteRepo = async (id) => {
+  try {
+    const Doctor = await DoctorSchema.findByIdAndDelete(id);
+  } catch {
+    throw new ApiError(404, "no doctor found with this id");
+  }
+};
+
+export const specificDoctor = async (id) => {
+  try {
+    const Doctor = await DoctorSchema.findById(id);
+    return Doctor;
+  } catch (error) {
+    console.error("Error in specificDoctor:", error);
+    throw new ApiError(
+      500,
+      "Database error occurred while fetching the doctor"
+    );
+  }
+};
