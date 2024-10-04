@@ -1,26 +1,29 @@
-// import DoctorList from './Components/Doctor/DoctorList';
-// import Appointment from './Components/Appointments/Appointments';
-// import DoctorsList from './Components/Doctor/DoctorsList';
-// import Inventory from './Components/Inventory/Inventory';
-// import PatientList from './Components/Patient/PatientList';
-import LoginPage from './Components/Homepage/LoginPage';
-
+// import LoginPage from "./pages/Homepage/LoginPage";
+import { createBrowserRouter } from "react-router-dom";
+import DoctorsList from "./pages/Doctor/DoctorsList";
+import PatientList from "./pages/Patient/PatientList";
 // import LoginPage from './Components/Homepage/LoginPage';
 
+import { RouterProvider } from "react-router-dom";
+import Layout from "./components/Layout";
+
 function App() {
+  const routes = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        { index: true, element: <DoctorsList /> },
+        {
+          path: "patients",
+          element: <PatientList />,
+        },
+      ],
+    },
+  ]);
   return (
+    <RouterProvider router={routes} />
     
-    <main className='App'>
-      <LoginPage/>
-    </main>
-    // <LoginPage />
-
-    // <DoctorsList/>
-    // <Inventory/>
-    // <PatientList/>
-    // <Appointment/>
-    
-
   );
 }
 

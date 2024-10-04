@@ -1,0 +1,48 @@
+/* PatientList.css */
+
+.Patient {
+    padding: 20px;
+    background-color: #f4f6f8;
+  }
+  
+  .Patient select {
+    margin-right: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .Patient table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .Patient table th,
+  .Patient table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .Patient table th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .Patient table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .Patient table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .Patient select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  

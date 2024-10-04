@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { doctorData } from "../DummyData/doctorData";
+import { doctorData } from "../../DummyData/doctorData";
+import '../../Styles/doctorsList.css'
 
 function DoctorsList() {
   const [doctors, setDoctors] = useState([]);
@@ -7,8 +8,6 @@ function DoctorsList() {
   const [selectedDepartment, setSelectedDepartment] = useState("");
   const [selectedSpecialist, setSelectedSpecialist] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
-
-  
 
   useEffect(() => {
     setDoctors(doctorData);

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { patientsData } from "../DummyData/patientData";
+import { patientsData } from "../../DummyData/patientData";
+// importing css
+import '../../Styles/patientsList.css'
 
 export default function PatientList() {
   const [patients, setPatients] = useState([]);
@@ -8,6 +10,7 @@ export default function PatientList() {
   const [selectedStatus, setSelectedStatus] = useState("");
 
   useEffect(() => {
+    
     setPatients(patientsData); // Initialize patients data
     setFilteredPatients(patientsData); // Initialize filtered patients with all patients
   }, []);
